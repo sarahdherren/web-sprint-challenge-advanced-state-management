@@ -11,14 +11,18 @@ import reducers from "./reducers";
 const { worker } = require('./mocks/browser');
 worker.start();
 
+const store = createStore(reducers, applyMiddleware(thunk));
+
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
-    <App />, 
+    <Provider store={store}>
+        <App />
+    </Provider>, 
     rootElement
 );
 
 //Task List:
-//1. Add in all necessary components and libary methods.
-//2. Create a store that includes thunk and logger middleware support.
-//3. Wrap the App component in a react-redux Provider element.
+//X Add in all necessary components and libary methods.
+//X Create a store that includes thunk and logger middleware support.
+//X Wrap the App component in a react-redux Provider element.
