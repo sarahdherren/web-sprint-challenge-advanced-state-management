@@ -1,18 +1,18 @@
 import { FETCH_SMURFS, API_FETCH, API_FAIL, ADD_SMURF, ERROR } from "../actions"
 
-export const initialState = {
+const initialState = {
     smurfs: [],
     isLoading: false,
     error: ""
 }
 
-const reducer = (state = initialState, action)=>{
+const reducer = (state = initialState, action) => {
 
     switch(action.type) {
         case FETCH_SMURFS:
             return {
                 ...state,
-                smurfs: [action.payload],
+                smurfs: action.payload,
                 isLoading: false
             }
         case API_FETCH:
@@ -43,6 +43,8 @@ const reducer = (state = initialState, action)=>{
                 ...state,
                 error: action.payload
             }
+        default:
+            return state; 
     }
 }
 
