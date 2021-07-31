@@ -24,16 +24,16 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            errorMessage = setError();
-        }
+           return setError(state);
+        } else {
         addSmurf(state);
-        setState({
+        return setState({
             name:"",
             position:"",
             nickname:"",
             description:""
         })
-    }
+    }}
 
     //const errorMessage = error;
 
