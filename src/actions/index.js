@@ -22,8 +22,8 @@ export const addSmurf = (smurf) => {
     return({type:ADD_SMURF, payload: smurf})
 }
 
-export const error = (error) => {
-    return({type:ERROR, payload: error})
+export const setError = () => (dispatch) => {
+    dispatch({type:ERROR, payload: "All fields are required for submission"})
 }
 
 //Task List:

@@ -32,11 +32,11 @@ const reducer = (state = initialState, action) => {
                 name: action.payload.name,
                 nickname: action.payload.nickname,
                 position: action.payload.position,
-                summary: action.payload.summary
+                description: action.payload.description
             }
             return {
                 ...state,
-                smurfs: [state.smurfs, newSmurf]
+                smurfs: [...state.smurfs, newSmurf]
             }
         case ERROR:
             return {
