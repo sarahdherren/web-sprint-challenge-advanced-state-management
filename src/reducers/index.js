@@ -1,3 +1,4 @@
+import { FETCH_SMURFS, API_FETCH, API_FAIL, ADD_SMURF, ERROR } from "../actions"
 
 export const initialState = {
     smurfs: [],
@@ -11,12 +12,13 @@ const reducer = (state = initialState, action)=>{
         case FETCH_SMURFS:
             return {
                 ...state,
-                smurfs: [action.payload]
+                smurfs: [action.payload],
+                isLoading: false
             }
         case API_FETCH:
             return {
                 ...state,
-                isLoading: true
+                isLoading: action.payload
             }
         case API_FAIL:
             return {
@@ -24,7 +26,7 @@ const reducer = (state = initialState, action)=>{
                 isLoading: false,
                 error: `Our village seems to be out gathering smurf-berries, please try again later, ${action.payload}`
             }
-        case NEW_SMURF:
+        case ADD_SMURF:
             const newSmurf = {
                 id: new Date(),
                 name: action.payload.name,
@@ -35,6 +37,11 @@ const reducer = (state = initialState, action)=>{
             return {
                 ...state,
                 smurfs: [state.smurfs, newSmurf]
+            }
+        case ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
     }
 }
